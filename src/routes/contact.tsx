@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { CONTACT_EMAIL } from "@/lib/site";
+import { sendContact } from "@/lib/send-contact";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -18,24 +19,44 @@ const ROLES = [
   "Something else",
 ];
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 function Contact() {
   const [role, setRole] = useState(ROLES[0]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [org, setOrg] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = "Youth Equipped enquiry — " + role;
-    const body =
-      "Name: " + name + "\n" +
-      "Email: " + email + "\n" +
-      "Organization: " + org + "\n" +
-      "Reaching out as: " + role + "\n\n" +
-      message;
-    window.location.href =
-      "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    setStatus("sending");
+    try {
+      await sendContact({ data: { name, email, org, role, message } });
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setOrg("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <>
+        <PageHero eyebrow="Contact & Apply" title="Thank you — message sent.">
+          We've received your note and will be in touch soon.
+        </PageHero>
+        <section className="mx-auto max-w-2xl px-6 py-16">
+          <Button onClick={() => setStatus("idle")} className="bg-brand-navy text-white hover:bg-brand-navy/90">
+            Send another message
+          </Button>
+        </section>
+      </>
+    );
   }
 
   return (
@@ -77,12 +98,17 @@ function Contact() {
             <Label htmlFor="message">Message</Label>
             <Textarea id="message" value={message} onChange={(e) => setMessage(e.target.value)} rows={5} required className="mt-1.5" />
           </div>
-          <Button type="submit" size="lg" className="bg-brand-navy text-white hover:bg-brand-navy/90">
-            Send message
+          {status === "error" ? (
+            <p className="text-sm text-destructive">
+              Something went wrong sending your message. Please email us directly at{" "}
+              <a href={"mailto:" + CONTACT_EMAIL} className="underline">{CONTACT_EMAIL}</a>.
+            </p>
+          ) : null}
+          <Button type="submit" size="lg" disabled={status === "sending"} className="bg-brand-navy text-white hover:bg-brand-navy/90">
+            {status === "sending" ? "Sending…" : "Send message"}
           </Button>
           <p className="text-xs text-muted-foreground">
-            This opens your email app pre-filled. Prefer email? Write us at{" "}
-            <a href={"mailto:" + CONTACT_EMAIL} className="underline">{CONTACT_EMAIL}</a>.
+            Prefer email? Write us at <a href={"mailto:" + CONTACT_EMAIL} className="underline">{CONTACT_EMAIL}</a>.
           </p>
         </form>
       </section>
