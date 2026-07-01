@@ -142,3 +142,35 @@
     color: var(--color-foreground);
   }
 }
+
+/* ===================== Youth Equipped brand ===================== */
+@theme inline {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-lime: var(--brand-lime);
+  --color-story: var(--story);
+  --color-tech: var(--tech);
+  --color-work: var(--work);
+  --color-lead: var(--lead);
+  --color-create: var(--create);
+}
+:root {
+  --brand-navy: oklch(0.208 0.040 265.75);
+  --brand-cyan: oklch(0.715 0.126 215.22);
+  --brand-lime: oklch(0.768 0.204 130.85);
+  --story: oklch(0.606 0.219 292.72);
+  --tech: oklch(0.623 0.188 259.81);
+  --work: oklch(0.723 0.192 149.58);
+  --lead: oklch(0.769 0.165 70.08);
+  --create: oklch(0.656 0.212 354.31);
+  /* brand-tuned semantics */
+  --primary: oklch(0.208 0.040 265.75);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.715 0.126 215.22);
+}
+@layer base {
+  h1, h2, h3, h4, .font-display { font-family: var(--font-display); }
+  html { scroll-behavior: smooth; }
+}

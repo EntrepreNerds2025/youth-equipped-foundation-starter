@@ -9,38 +9,240 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StoriesRouteImport } from './routes/stories'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as CreativeCircleRouteImport } from './routes/creative-circle'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProgramsIndexRouteImport } from './routes/programs/index'
+import { Route as ProgramsWorkreadyRouteImport } from './routes/programs/workready'
+import { Route as ProgramsTechreadyRouteImport } from './routes/programs/techready'
+import { Route as ProgramsStoryreadyRouteImport } from './routes/programs/storyready'
+import { Route as ProgramsLeadreadyRouteImport } from './routes/programs/leadready'
+import { Route as ProgramsCreatereadyRouteImport } from './routes/programs/createready'
 
+const StoriesRoute = StoriesRouteImport.update({
+  id: '/stories',
+  path: '/stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreativeCircleRoute = CreativeCircleRouteImport.update({
+  id: '/creative-circle',
+  path: '/creative-circle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
+  id: '/programs/',
+  path: '/programs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsWorkreadyRoute = ProgramsWorkreadyRouteImport.update({
+  id: '/programs/workready',
+  path: '/programs/workready',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsTechreadyRoute = ProgramsTechreadyRouteImport.update({
+  id: '/programs/techready',
+  path: '/programs/techready',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsStoryreadyRoute = ProgramsStoryreadyRouteImport.update({
+  id: '/programs/storyready',
+  path: '/programs/storyready',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsLeadreadyRoute = ProgramsLeadreadyRouteImport.update({
+  id: '/programs/leadready',
+  path: '/programs/leadready',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsCreatereadyRoute = ProgramsCreatereadyRouteImport.update({
+  id: '/programs/createready',
+  path: '/programs/createready',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/creative-circle': typeof CreativeCircleRoute
+  '/partners': typeof PartnersRoute
+  '/sponsors': typeof SponsorsRoute
+  '/stories': typeof StoriesRoute
+  '/programs/createready': typeof ProgramsCreatereadyRoute
+  '/programs/leadready': typeof ProgramsLeadreadyRoute
+  '/programs/storyready': typeof ProgramsStoryreadyRoute
+  '/programs/techready': typeof ProgramsTechreadyRoute
+  '/programs/workready': typeof ProgramsWorkreadyRoute
+  '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/creative-circle': typeof CreativeCircleRoute
+  '/partners': typeof PartnersRoute
+  '/sponsors': typeof SponsorsRoute
+  '/stories': typeof StoriesRoute
+  '/programs/createready': typeof ProgramsCreatereadyRoute
+  '/programs/leadready': typeof ProgramsLeadreadyRoute
+  '/programs/storyready': typeof ProgramsStoryreadyRoute
+  '/programs/techready': typeof ProgramsTechreadyRoute
+  '/programs/workready': typeof ProgramsWorkreadyRoute
+  '/programs': typeof ProgramsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/creative-circle': typeof CreativeCircleRoute
+  '/partners': typeof PartnersRoute
+  '/sponsors': typeof SponsorsRoute
+  '/stories': typeof StoriesRoute
+  '/programs/createready': typeof ProgramsCreatereadyRoute
+  '/programs/leadready': typeof ProgramsLeadreadyRoute
+  '/programs/storyready': typeof ProgramsStoryreadyRoute
+  '/programs/techready': typeof ProgramsTechreadyRoute
+  '/programs/workready': typeof ProgramsWorkreadyRoute
+  '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/creative-circle'
+    | '/partners'
+    | '/sponsors'
+    | '/stories'
+    | '/programs/createready'
+    | '/programs/leadready'
+    | '/programs/storyready'
+    | '/programs/techready'
+    | '/programs/workready'
+    | '/programs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/creative-circle'
+    | '/partners'
+    | '/sponsors'
+    | '/stories'
+    | '/programs/createready'
+    | '/programs/leadready'
+    | '/programs/storyready'
+    | '/programs/techready'
+    | '/programs/workready'
+    | '/programs'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/creative-circle'
+    | '/partners'
+    | '/sponsors'
+    | '/stories'
+    | '/programs/createready'
+    | '/programs/leadready'
+    | '/programs/storyready'
+    | '/programs/techready'
+    | '/programs/workready'
+    | '/programs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  CreativeCircleRoute: typeof CreativeCircleRoute
+  PartnersRoute: typeof PartnersRoute
+  SponsorsRoute: typeof SponsorsRoute
+  StoriesRoute: typeof StoriesRoute
+  ProgramsCreatereadyRoute: typeof ProgramsCreatereadyRoute
+  ProgramsLeadreadyRoute: typeof ProgramsLeadreadyRoute
+  ProgramsStoryreadyRoute: typeof ProgramsStoryreadyRoute
+  ProgramsTechreadyRoute: typeof ProgramsTechreadyRoute
+  ProgramsWorkreadyRoute: typeof ProgramsWorkreadyRoute
+  ProgramsIndexRoute: typeof ProgramsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/stories': {
+      id: '/stories'
+      path: '/stories'
+      fullPath: '/stories'
+      preLoaderRoute: typeof StoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/creative-circle': {
+      id: '/creative-circle'
+      path: '/creative-circle'
+      fullPath: '/creative-circle'
+      preLoaderRoute: typeof CreativeCircleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +250,65 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/programs/': {
+      id: '/programs/'
+      path: '/programs'
+      fullPath: '/programs/'
+      preLoaderRoute: typeof ProgramsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/workready': {
+      id: '/programs/workready'
+      path: '/programs/workready'
+      fullPath: '/programs/workready'
+      preLoaderRoute: typeof ProgramsWorkreadyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/techready': {
+      id: '/programs/techready'
+      path: '/programs/techready'
+      fullPath: '/programs/techready'
+      preLoaderRoute: typeof ProgramsTechreadyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/storyready': {
+      id: '/programs/storyready'
+      path: '/programs/storyready'
+      fullPath: '/programs/storyready'
+      preLoaderRoute: typeof ProgramsStoryreadyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/leadready': {
+      id: '/programs/leadready'
+      path: '/programs/leadready'
+      fullPath: '/programs/leadready'
+      preLoaderRoute: typeof ProgramsLeadreadyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/createready': {
+      id: '/programs/createready'
+      path: '/programs/createready'
+      fullPath: '/programs/createready'
+      preLoaderRoute: typeof ProgramsCreatereadyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  CreativeCircleRoute: CreativeCircleRoute,
+  PartnersRoute: PartnersRoute,
+  SponsorsRoute: SponsorsRoute,
+  StoriesRoute: StoriesRoute,
+  ProgramsCreatereadyRoute: ProgramsCreatereadyRoute,
+  ProgramsLeadreadyRoute: ProgramsLeadreadyRoute,
+  ProgramsStoryreadyRoute: ProgramsStoryreadyRoute,
+  ProgramsTechreadyRoute: ProgramsTechreadyRoute,
+  ProgramsWorkreadyRoute: ProgramsWorkreadyRoute,
+  ProgramsIndexRoute: ProgramsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
